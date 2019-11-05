@@ -1,0 +1,14 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+//Run gradlew tasks to get a list of available tasks. Run with --debug option to get more log output. Run with --scan to get full insights.
+
+//解决java控制台输出中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"

@@ -1,0 +1,24 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    //注册注解，并对其继承META-INF的配置信息
+    //As3.4.1+gradle5.1.1
+//    compileOnly 'com.google.auto.service:auto-service:1.0-rc4'
+//    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc4'
+    //As 3.1.4+gradle4.4
+    implementation 'com.google.auto.service:auto-service:1.0-rc2'
+
+    implementation project(':router_annotation')
+
+    //JavaPoet
+    implementation 'com.squareup:javapoet:1.11.1'
+}
+//解决java控制台输出中文乱码
+tasks.withType(JavaCompile) {
+    options.encoding = "utf-8"
+}
+
+
+sourceCompatibility = "1.7"
+targetCompatibility = "1.7"
